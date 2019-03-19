@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+
+    <h1>Hello</h1>
+    <h1>Hello</h1>
+    <h1>Hello</h1>
+
+    <div>
+        <br><br>
+        <a href = "./pageA.html">page A A A</a>
+        <br><br>
+        <a href = "./pageB.html">page B B B</a>
+        <br><br>
+        <a href = "./">page index</a>
+        <br><br>
+    </div>
+
+    <p>Value A</p>
+    <input id = 'aa' type = 'text' spellcheck = "false" autocomplete = "off">
+
+    <br>
+    <br>
+
+    <p>Value B</p>
+    <input id = 'bb' type = 'text' spellcheck = "false" autocomplete = "off">
+
+    <br>
+    <br>
+
+    <button onclick = "getSum();">Сумма</button>
+    <button onclick = "getMul();">Произведение</button>
+
+    <script src = "./sendGetPost.js"></script>
+        
+    <script>
+        function getSum() {
+            let a = document.getElementById('aa').value;
+            let b = document.getElementById('bb').value;
+            a = parseInt(a);
+            b = parseInt(b);
+            sendGet("/project/app/find/sum?a=" + a + "&b=" + b, (answer) => {
+                alert(answer);
+            });
+        }
+
+        function getMul() {
+            let a = document.getElementById('aa').value;
+            let b = document.getElementById('bb').value;
+            a = parseInt(a);
+            b = parseInt(b);
+            const body = JSON.stringify({
+                a: a,
+                b: b,
+            });
+            sendPost("/project/app/find/mul", body, (answer) => {
+                alert(answer);
+            });
+        }
+    </script>
+    
+</body>
+</html>

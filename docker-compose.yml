@@ -1,0 +1,14 @@
+version: "3"
+services:
+  app_1:
+    build:
+      context: ./app_1
+      dockerfile: Dockerfile
+    image: app_1:tag
+  front_app:
+    build:
+      context: ./front_app
+      dockerfile: Dockerfile
+    image: front_app:tag
+    ports:
+      - "5000:80"
